@@ -1,2 +1,41 @@
-# BiliRecap
-这是一个专门为 macOS 用户设计的 Bilibili 缓存视频提取工具。通过简单的拖拽操作，即可将 B 站客户端下载的 .m4s 缓存文件还原为无损的 .mp4 视频。
+# BiliCache-Extractor
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)
+![Python](https://img.shields.io/badge/python-3.6%2B-blue.svg)
+
+一个轻量级的 Bilibili 缓存视频提取工具，专为 macOS 优化。能够自动修复 `.m4s` 文件头，并将分离的音视频流合并为完整的 `.mp4` 格式。
+
+---
+
+## ✨ 功能特点 (Features)
+
+* **🍎 macOS 深度优化**：完美处理 Mac 终端拖拽文件夹产生的路径转义符（空格、引号）。
+* **⚡️ 无损合成**：基于 FFmpeg 的流拷贝（Stream Copy）技术，不重编码，秒级完成，画质 100% 还原。
+* **📂 自动命名**：解析 `videoInfo.json`，自动提取视频标题并清理系统非法字符。
+* **📦 批量处理**：支持一次性拖入多个文件夹或父目录进行递归扫描。
+
+---
+
+## 🔬 核心原理 (Technical Principles)
+
+### 1. 文件头去混淆 (Deobfuscation)
+B 站移动端及 PC 端缓存的 `.m4s` 文件并非标准的 MP4 格式，其头部被填充了若干字节的无效数据。
+* **修复逻辑**：脚本在二进制流中检索 `ftyp` (File Type Box) 标志位。
+* **定位公式**：
+    $$StartPoint = \text{Offset}(b'ftyp') - 4$$
+    定位后截取该位置之后的所有数据，即可恢复标准 ISOBMFF 容器结构。
+
+### 2. 音视频混流 (Muxing)
+由于 B 站采用 DASH 流媒体技术，视频（体积最大）与音频（体积最小）是分离存储的。
+* **处理方案**：程序自动匹配文件夹内大小极端的两个 `.m4s` 文件，调用 FFmpeg 将其封装进 `.mp4` 容器。
+
+---
+
+## 🛠 安装指南 (Installation)
+
+### 1. 环境依赖 (macOS)
+确保你的系统中已安装 **Python 3** 和 **FFmpeg**。
+推荐使用 [Homebrew](https://brew.sh/) 安装：
+```bash
+brew install ffmpeg
