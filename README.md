@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey.svg)
 ![Python](https://img.shields.io/badge/python-3.6%2B-blue.svg)
 
-一个轻量级的 Bilibili 缓存视频提取工具，专为 macOS 优化。能够自动修复 `.m4s` 文件头，并将分离的音视频流合并为完整的 `.mp4` 格式。
+一个轻量级的 哔哩哔哩 缓存视频提取脚本，专为 macOS 优化。能够自动修复 `.m4s` 文件头，并将分离的音视频流合并为完整的 `.mp4` 格式。
 
 ---
 
