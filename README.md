@@ -39,3 +39,26 @@ B 站移动端及 PC 端缓存的 `.m4s` 文件并非标准的 MP4 格式，其�
 推荐使用 [Homebrew](https://brew.sh/) 安装：
 ```bash
 brew install ffmpeg
+```
+### 2. 获取工具
+```Bash
+git clone [https://github.com/GolLight/BiliRecap.git](https://github.com/GolLight/BiliRecap.git)
+cd BiliRecap
+📖 使用方法 (Usage)
+运行脚本：
+
+```Bash
+python3 main.py
+```
+#### 第一步：将你想提取的缓存文件夹（一个或多个,多个需要多次拖入需要空格）直接拖入终端窗口。
+
+#### 第二步：设置输出目录
+
+## ⚠️ 免责声明 (Disclaimer)
+本工具仅供学习研究 Python 文件 IO 与二进制流处理之用。
+
+请勿将本工具用于任何侵犯版权或非法下载的行为。
+
+衍生出的任何法律责任由使用者自行承担。
+
+后续计划：本项目后续可能开发基于跨端框架的图形界面程序（GUI），敬请期待。
