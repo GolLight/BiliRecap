@@ -1,0 +1,13 @@
+# macOS system files
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+temp_v_*.m4s
+temp_a_*.m4s
+.venv/
+
+# Build/Dist
+build/
+dist/
